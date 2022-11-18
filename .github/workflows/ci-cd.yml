@@ -57,10 +57,10 @@ jobs:
       - name: Generate Static Content
         run: hugo --minify
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.1
+        uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: "./public"
-          production-branch: dev
+          production-branch: master
           production-deploy: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deployed with GitHub Actions"
@@ -68,7 +68,6 @@ jobs:
           enable-commit-comment: false
           enable-commit-status: true
           overwrites-pull-request-comment: true
-          netlify-config-path: ./netlify.toml
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
