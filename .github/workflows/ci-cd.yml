@@ -35,17 +35,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: ✨ Setup Hugo
-        env:
-          HUGO_VERSION: 0.105.0
-        run: |
-          mkdir ~/hugo
-          cd ~/hugo
-          curl -L "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" --output hugo.tar.gz
-          tar -xvzf hugo.tar.gz
-          sudo mv hugo /usr/local/bin
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.105.0"
 
       - name: 🛠️ Build
-        run: hugo --source website --minify
+        run: hugo --minify
 
   # Deployment job
   deploy:
