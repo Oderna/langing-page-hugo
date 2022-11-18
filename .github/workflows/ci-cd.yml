@@ -9,12 +9,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
@@ -58,9 +52,11 @@ jobs:
         run: hugo --minify
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
-        #env:
+        env:
           #NETLIFY_AUTH_TOKEN: "p3SqfvgsvzehyfwmSdSNte6_fgdW9iSoIfBqeIYPfkU"
           #NETLIFY_SITE_ID: "4089c118-22c3-4d78-be10-99e152b2b133"
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           publish-dir: "./public"
           production-branch: master
