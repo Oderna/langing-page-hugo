@@ -59,16 +59,16 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: "p3SqfvgsvzehyfwmSdSNte6_fgdW9iSoIfBqeIYPfkU"
+          NETLIFY_SITE_ID: "4089c118-22c3-4d78-be10-99e152b2b133"
         with:
           publish-dir: "./public"
           production-branch: master
-          production-deploy: true
+          #production-deploy: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deployed with GitHub Actions"
           enable-pull-request-comment: true
           enable-commit-comment: false
           enable-commit-status: true
           overwrites-pull-request-comment: true
-        timeout-minutes: 1
+        #timeout-minutes: 1
